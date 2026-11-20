@@ -1,0 +1,19 @@
+/* Navigation theme layer: preserves original menu, labels, sizes and CTA. */
+:root{--nav-ink:#ffffff;--nav-surface:rgba(11,17,40,.82);--nav-stroke:rgba(255,255,255,.12);--nav-ease:cubic-bezier(.22,1,.36,1)}
+.header#site-navigation-bar{position:fixed;top:0;left:0;right:0;z-index:1000;width:100%;max-width:none;margin:0;padding:40px max(var(--gutter),calc((100vw - var(--container))/2)) 24px;min-height:112px;color:var(--nav-ink);background:var(--nav-surface);border-bottom:1px solid var(--nav-stroke);transition:background-color .36s var(--nav-ease),color .36s var(--nav-ease),border-color .36s var(--nav-ease);isolation:isolate}
+.header#site-navigation-bar[data-nav-theme="dark"]{--nav-ink:#fff;--nav-surface:rgba(11,17,40,.84);--nav-stroke:rgba(255,255,255,.12)}
+.header#site-navigation-bar[data-nav-theme="light"]{--nav-ink:var(--text);--nav-surface:rgba(255,255,255,.97);--nav-stroke:var(--border)}
+.header#site-navigation-bar[data-nav-theme="brand"]{--nav-ink:#fff;--nav-surface:rgba(50,98,255,.97);--nav-stroke:rgba(255,255,255,.25)}
+.header#site-navigation-bar .nav a{color:var(--nav-ink);transition:color .36s var(--nav-ease)}
+.header#site-navigation-bar .logo{transition:filter .36s var(--nav-ease)}
+.header#site-navigation-bar[data-nav-theme="light"] .logo{filter:brightness(0)}
+.header#site-navigation-bar[data-nav-theme="dark"] .logo,.header#site-navigation-bar[data-nav-theme="brand"] .logo{filter:none}
+.header#site-navigation-bar .menu{color:var(--nav-ink);border-color:var(--nav-stroke);transition:color .36s var(--nav-ease),border-color .36s var(--nav-ease)}
+.header#site-navigation-bar .nav.open{background:var(--neutral-950);color:#fff}
+.header#site-navigation-bar .nav.open a{color:#fff}
+.contact-header{min-height:136px}
+html{scroll-padding-top:136px}section[id],.benefits[id],footer[id],main[id]{scroll-margin-top:136px}
+@media(max-width:900px){.header#site-navigation-bar{padding-top:24px;padding-bottom:20px;min-height:80px}.header#site-navigation-bar .nav{top:100%;left:var(--gutter);right:var(--gutter)}.contact-header{min-height:94px}html{scroll-padding-top:100px}section[id],.benefits[id],footer[id],main[id]{scroll-margin-top:100px}}
+@media(max-width:600px){.header#site-navigation-bar{min-height:74px;padding-top:18px;padding-bottom:18px}.contact-header{min-height:84px}}
+@media(prefers-reduced-motion:reduce){.header#site-navigation-bar,.header#site-navigation-bar .nav a,.header#site-navigation-bar .logo,.header#site-navigation-bar .menu{transition:none!important}}
+@media(max-width:900px){body.nav-menu-open{overflow:hidden}}

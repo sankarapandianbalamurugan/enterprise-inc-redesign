@@ -1,0 +1,21 @@
+/* Proposed interaction treatment; reference site could not be accessed. */
+:root{--motion-fast:220ms;--motion-base:360ms;--motion-slow:650ms;--motion-ease:cubic-bezier(.22,1,.36,1)}
+.btn,.read,.nav a,.footer a,.benefit,.project,.faq summary,.blog h3 a{transition:background-color var(--motion-base) var(--motion-ease),color var(--motion-fast) ease,border-color var(--motion-base) var(--motion-ease),box-shadow var(--motion-base) var(--motion-ease)}
+.btn img,.read img,.benefit-top img{transition:transform var(--motion-base) var(--motion-ease)}
+.media-frame img{transition:transform var(--motion-slow) var(--motion-ease)}
+.nav a,.footer nav a{position:relative}.nav a::after,.footer nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform var(--motion-base) var(--motion-ease)}
+.btn:focus-visible,.read:focus-visible{outline-offset:5px}.btn:active{background:var(--brand-700)}
+@media(hover:hover) and (pointer:fine){.btn:hover{background:var(--brand-700)}.btn:hover img,.read:hover img{transform:translate(3px,-3px)}.read:hover{text-decoration:none;color:var(--brand-700)}.nav a:hover::after,.footer nav a:hover::after{transform:scaleX(1);transform-origin:left}.benefit:hover{border-color:var(--brand-500);background:var(--neutral-50)}.benefit:hover .benefit-top img{transform:translateY(-3px)}.project:hover{border-color:#b6c7ff}.project:hover .media-frame img,.blog:hover .media-frame img{transform:scale(1.045)}.blog:hover h3 a{color:var(--link)}.faq summary:hover{background:var(--neutral-200)}}
+[data-reveal].reveal-enter{animation:section-in 550ms var(--motion-ease) both}@keyframes section-in{from{opacity:.65;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Four interaction refinements */
+.hero-bg{opacity:0;transition:opacity 650ms ease;pointer-events:none}.hero-bg.is-front{opacity:1}.hero-bg:first-of-type:not(.is-front){opacity:0}.hero-bg:not([src]){visibility:hidden}
+.slider button[aria-selected=true]::before{display:none}.slide-progress{position:absolute;top:-1px;left:0;width:100%;height:2px;background:white;transform:scaleX(var(--progress,0));transform-origin:left;pointer-events:none}
+.benefit,.benefit h3,.benefit p,.benefit-top,.benefit .read{transition:background-color var(--motion-base) var(--motion-ease),color var(--motion-base) var(--motion-ease),border-color var(--motion-base) var(--motion-ease)}
+.benefit img,.faq summary img{transition:filter var(--motion-base) var(--motion-ease),transform var(--motion-base) var(--motion-ease)}
+.benefit:focus-within{background:var(--brand-500);border-color:var(--brand-500);color:white}.benefit:focus-within :is(h3,p,.benefit-top,.read){color:white}.benefit:focus-within img{filter:brightness(0) invert(1)}.benefit:focus-within .read:focus-visible{outline-color:white}
+@media(hover:hover) and (pointer:fine){.benefit:hover{background:var(--brand-500);border-color:var(--brand-500);color:white}.benefit:hover :is(h3,p,.benefit-top,.read){color:white}.benefit:hover img{filter:brightness(0) invert(1)}.faq summary:hover{background:var(--neutral-100);color:var(--brand-500)}.faq summary:hover img{filter:brightness(0) saturate(100%) invert(32%) sepia(99%) saturate(3020%) hue-rotate(221deg) brightness(103%) contrast(103%)}}
+.faq summary:focus-visible{color:var(--brand-500)}.faq-answer{overflow:hidden}.faq details[data-expanded=true] summary img{transform:rotate(180deg)}
+@media(min-width:768px) and (prefers-reduced-motion:no-preference){.projects.stack-ready{display:block;padding-bottom:24px}.stack-ready .project{position:sticky;top:calc(24px + var(--stack-index,0)*16px);z-index:calc(1 + var(--stack-index,0));margin-bottom:40px;isolation:isolate}.stack-ready .project:nth-child(2){--stack-index:1}.stack-ready .project:nth-child(3){--stack-index:2;margin-bottom:0}.stack-ready .project:focus-within{z-index:5}}
+.hero-bg:first-of-type:not(.is-front){opacity:1}.hero:has(.hero-bg-next.is-front) .hero-bg:first-of-type{opacity:0}.hero-bg-next{z-index:-2}.hero-bg.is-front{z-index:-2}.hero-bg-next:not([src]){visibility:hidden}
